@@ -1,3 +1,7 @@
+/*
+Copyright © 2025 xiaolin2004 <1553367438@qq.com>
+*/
+
 package tools
 
 func BuildBaseHeader(reqTime string, clientId string, keyVersion string, signatureValue string) map[string]string {

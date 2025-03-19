@@ -1,3 +1,7 @@
+/*
+Copyright © 2025 xiaolin2004 <1553367438@qq.com>
+*/
+
 package tools
 
 import (
@@ -10,6 +14,7 @@ import (
 	"encoding/pem"
 	"errors"
 	"github.com/alipay/global-open-sdk-go/com/alipay/api/exception"
+	"github.com/alipay/global-open-sdk-go/com/alipay/api/tools"
 	"net/url"
 )
 
@@ -111,4 +116,17 @@ func Decode(originalStr string) string {
 
 func getPkcsKey(key string) string {
 	return "-----BEGIN PRIVATE KEY-----\n" + key + "\n-----END PRIVATE KEY-----"
+}
+
+func CheckRspSign(httpMethod string, path string, clientId string, responseTime string, rspBody string, rspSignValue string, alipayPublicKey string) (bool, error) {
+
+	signature, err := tools.CheckSignature(path, httpMethod, clientId, responseTime, rspBody, rspSignValue, alipayPublicKey)
+	if err != nil {
+		return false, &exception.AlipayLibraryError{Message: "Failed to check signature  " + err.Error()}
+	}
+	if !signature {
+		return false, &exception.AlipayLibraryError{Message: "check signature fail"}
+	} else {
+		return true, nil
+	}
 }
