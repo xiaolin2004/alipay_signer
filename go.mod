@@ -1,4 +1,4 @@
-module signer
+module github.com/xiaolin2004/signer
 
 go 1.23.7
 

@@ -6,7 +6,7 @@ package cmd
 import (
 	"fmt"
 	"github.com/spf13/cobra"
-	"signer/tools"
+	"github.com/xiaolin2004/signer/tools"
 	"strconv"
 	"time"
 )
@@ -28,7 +28,9 @@ var signCmd = &cobra.Command{
 			fmt.Printf("%v", err)
 		}
 		header := tools.BuildBaseHeader(reqTime, clientId, "1", sign)
-		fmt.Println(header)
+		for key, value := range header {
+			fmt.Printf("%s:%s\n", key, value)
+		}
 	},
 }
 
