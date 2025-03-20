@@ -14,7 +14,19 @@ import (
 
 // signCmd represents the sign command
 var signCmd = &cobra.Command{
-	Use: "sign [clientId] [path] [httpMethod] [privateKey] [jsonBody]",
+	Use:   "sign [clientId] [path] [httpMethod] [privateKey] [jsonBody]",
+	Short: "Generate signed headers for Alipay API requests",
+	Long: `Generate Alipay-compliant signature headers.
+
+Required inputs:
+- clientId: Your Alipay client ID.
+- path: The API request path (no query string, e.g., /api/v1/payments/subscription).
+- httpMethod: HTTP method, e.g., POST / GET / PUT.
+- privateKey: Your RSA private key (PEM string or base64).
+- jsonBody: The raw JSON string of your request body.
+
+Example usage:
+sign 2021000118635012 /api/v1/payments/subscription POST "$(cat rsa_private_key.pem)" '{"amount":"88.88"}'`,
 	Args: func(cmd *cobra.Command, args []string) error {
 		if err := cobra.ExactArgs(5)(cmd, args); err != nil {
 			return err
