@@ -1,4 +1,4 @@
-module github.com/xiaolin2004/signer
+module github.com/xiaolin2004/alipay_signer
 
 go 1.23.7
 
