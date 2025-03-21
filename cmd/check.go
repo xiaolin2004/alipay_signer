@@ -7,7 +7,7 @@ package cmd
 import (
 	"fmt"
 	"github.com/spf13/cobra"
-	tools2 "github.com/xiaolin2004/signer/tools"
+	tools2 "github.com/xiaolin2004/alipay_signer/tools"
 )
 
 // checkCmd represents the check command
